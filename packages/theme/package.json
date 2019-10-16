@@ -1,0 +1,11 @@
+{
+    "name": "@elemental-ui/theme",
+    "version": "0.0.1",
+    "main": "dist/theme.cjs.js",
+    "module": "dist/theme.esm.js",
+    "author": "Thinkmill",
+    "license": "MIT",
+    "dependencies": {
+        "@babel/runtime": "^7.4.3"
+    }
+}
