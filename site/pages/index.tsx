@@ -24,7 +24,7 @@ const Home = () => (
     <h2>Textarea</h2>
     <Textarea />
     <h2>Text Input</h2>
-    <TextInput />
+    <TextInput label="search inputs" />
   </>
 );
 

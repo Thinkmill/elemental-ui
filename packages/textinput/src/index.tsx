@@ -1,5 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
+import { forwardRef } from 'react';
+import Input from '@elemental-ui/textarea/src';
 const neutrals = {
   N05: '#F4F5F7',
   N10: '#EBECF0',
@@ -91,13 +93,22 @@ function getOverrides(key: string, overrides: Record<string, any> = {}) {
 }
 
 export interface TextInputProps {
+  disabled?: boolean;
   overrides?: Record<string, any>;
+  label?: string,
 }
 
-export default function Input({ overrides, ...props }: TextInputProps) {
+export default forwardRef(function Input({ label, overrides, ...props }: TextInputProps, ref) {
   const { styles, attributes, component: InputComponent } = getOverrides(
     'Input',
     overrides
   );
-  return <InputComponent css={styles(props)} {...props} />;
-}
+  return (
+  <>
+    <label>
+      {label}
+      <InputComponent ref={ref} css={styles(props)} {...props} />;
+    </label>
+  </>
+  )
+});
