@@ -7,8 +7,10 @@ import Radio from '@elemental-ui/radio';
 import Textarea from '@elemental-ui/textarea';
 import TextInput from '@elemental-ui/textinput';
 
-const Home = () => (
-  <>
+
+const Home = () => {
+  return (
+    <>
     <HtmlHead title="Design System - Home" />
     <Reset />
     <h1>Design System™</h1>
@@ -24,8 +26,30 @@ const Home = () => (
     <h2>Textarea</h2>
     <Textarea />
     <h2>Text Input</h2>
-    <TextInput label="search inputs" />
+    <TextInput 
+      theme={{
+        input: {
+          backgroundColor: {
+            hovered: 'hotpink',
+          }
+        }
+      }}
+      overrides={{
+        Input: {
+          styles: (defaultStyles: any, state: Record<string, any>) => ({
+            ...defaultStyles, 
+          }),
+          attributes: () => ({
+            "data-test-id": "hello-input",
+          })
+        }
+      }}
+      required 
+      disabled
+      label="search inputs"
+    />
   </>
-);
+  )
+}
 
 export default Home;

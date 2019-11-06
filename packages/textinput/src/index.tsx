@@ -1,7 +1,8 @@
 /** @jsx jsx */
-import { forwardRef } from 'react';
+import { Fragment } from 'react';
 import { jsx } from '@emotion/core';
-import { colors } from '@elemental-ui/theme';
+import { forwardRef } from 'react';
+import { createExtender } from '@elemental-ui/theme';
 
 const borderRadius = 6;
 const gridSize = 8;
@@ -23,63 +24,57 @@ const uniformHeight = {
   whiteSpace: 'nowrap',
 };
 
-const defaultInputStyles = (state: Record<string, any>) => ({
+const defaultInputStyles = ({ theme, ...state }: Record<string, any>) => ({
     ...uniformHeight,
-    backgroundColor: state.disabled ? colors.N10 : 'white',
-    borderColor: colors.N20,
-    color: 'inherit',
+    backgroundColor: theme.input.backgroundColor.none,
+    borderColor: theme.input.borderColor.none,
+    color: theme.input.textColor.none,
     width: '100%',
     ':hover': {
-        borderColor: colors.N30,
-        outline: 0
+        borderColor: theme.input.borderColor.hovered,
+        outline: 0,
     },
     ':focus': {
-        borderColor: colors.primary,
+        borderColor: theme.input.borderColor.focused,
         outline: 0
     },
     '&[disabled]': {
-        borderColor: colors.N15,
-        backgroundColor: colors.N05
+        borderColor: theme.input.borderColor.disabled,
+        backgroundColor: theme.input.backgroundColor.disabled,
     },
 });
 
 const defaults: Record<string, any> = {
     Input: {
-        component: (props: Record<string, any>) => (
-            <input type="text" {...props} />
-        ),
-        styles: defaultInputStyles
+        component: forwardRef((props: Record<string, any>, ref: React.Ref<HTMLInputElement>) => (
+            <input ref={ref} type="text" {...props} />
+        )),
+        styles: defaultInputStyles,
+        attributes: (props: any) => ({})
     }
 };
 
-function getOverrides(key: string, overrides: Record<string, any> = {}) {
-    if (!overrides[key]) {
-        return defaults[key];
-    } else {
-        return {
-            ...defaults[key],
-            ...overrides[key]
-        };
-    }
-}
-
 export interface TextInputProps {
+  required?: boolean;
   disabled?: boolean;
   overrides?: Record<string, any>;
   label?: string,
 }
 
 export default forwardRef(function Input({ label, overrides, ...props }: TextInputProps, ref) {
-  const { styles, attributes, component: InputComponent } = getOverrides(
-    'Input',
-    overrides
-  );
+  const getOverrides = createExtender(defaults, overrides);
+  const { styles, attributes, component: InputComponent } = getOverrides('Input');
   return (
-  <>
-    <label>
-      {label}
-      <InputComponent ref={ref} css={styles(props)} {...props} />;
-    </label>
-  </>
+    <Fragment>
+      <label>
+        {label}
+        <InputComponent 
+          {...attributes()}
+          ref={ref} 
+          css={styles(props)} 
+          {...props}
+        />
+      </label>
+    </Fragment>
   )
 });
