@@ -1,0 +1,19 @@
+{
+  "name": "@elemental-ui/a11y",
+  "version": "0.0.0",
+  "main": "dist/a11y.cjs.js",
+  "module": "dist/a11y.esm.js",
+  "docs": {
+    "section": "foundations"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "@elemental-ui/core": "^0.0.0",
+    "@elemental-ui/utils": "^0.0.0"
+  }
+}

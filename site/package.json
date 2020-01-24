@@ -1,5 +1,5 @@
 {
-  "name": "@design-system/site",
+  "name": "@elemental-ui/site",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,12 +8,25 @@
     "start": "next start"
   },
   "dependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
-    "@preconstruct/next": "^0.1.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@changesets/cli": "^2.0.3",
+    "@magical-types/macro": "^0.5.0",
+    "@mdx-js/loader": "^1.5.5",
+    "@mdx-js/react": "^1.5.5",
+    "@next/mdx": "^9.2.1",
+    "@preconstruct/next": "^1.0.1",
+    "@types/react-dom": "^16.9.1",
     "glob": "^7.1.3",
     "glob-promise": "^3.4.0",
     "next": "^9.0.2",
-    "react": "^16.8.9",
-    "react-dom": "^16.8.3"
+    "prism-react-renderer": "^1.0.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-live": "^2.2.2",
+    "slugify": "^1.3.6",
+    "typescript": "^3.6.3"
   }
 }

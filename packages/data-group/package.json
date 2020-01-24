@@ -1,0 +1,21 @@
+{
+  "name": "@elemental-ui/data-group",
+  "version": "0.0.0",
+  "main": "dist/data-group.cjs.js",
+  "module": "dist/data-group.esm.js",
+  "docs": {
+    "section": "visual"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "@elemental-ui/box": "^0.0.0",
+    "@elemental-ui/core": "^0.0.0",
+    "@elemental-ui/typography": "^0.0.0",
+    "@elemental-ui/utils": "^0.0.0"
+  }
+}

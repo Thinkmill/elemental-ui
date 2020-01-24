@@ -1,0 +1,93 @@
+{
+  "name": "@elemental-ui/icon",
+  "version": "0.0.0",
+  "main": "dist/icon.cjs.js",
+  "module": "dist/icon.esm.js",
+  "scripts": {
+    "build": "node lib/build-icons.js"
+  },
+  "docs": {
+    "section": "visual"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "chalk": "^3.0.0",
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "@elemental-ui/core": "^0.0.0",
+    "@elemental-ui/utils": "^0.0.0"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      ".",
+      "AddIcon",
+      "AlertIcon",
+      "AllowanceIcon",
+      "ArchivedIcon",
+      "ArrowLeftIcon",
+      "BeachIcon",
+      "BriefcaseFilledIcon",
+      "BriefcaseOutlineIcon",
+      "CalendarIcon",
+      "CarIcon",
+      "CogFilledIcon",
+      "CogOutlineIcon",
+      "CancelIcon",
+      "ChevronUpIcon",
+      "ChevronLeftIcon",
+      "ChevronRightIcon",
+      "ChevronDownIcon",
+      "ChevronIcon",
+      "CogIcon",
+      "CommunityIcon",
+      "CrossIcon",
+      "DisconnectedIcon",
+      "DollarIcon",
+      "DotsIcon",
+      "DuplicateIcon",
+      "EditIcon",
+      "EmailIcon",
+      "EventIcon",
+      "ExpandIcon",
+      "FaceIDIcon",
+      "FaceRecognitionIcon",
+      "FbtIcon",
+      "FingerprintIcon",
+      "HelpIcon",
+      "LaundryIcon",
+      "MealIcon",
+      "MessageIcon",
+      "MoneyFilledIcon",
+      "MoneyOutlineIcon",
+      "MoonIcon",
+      "MoreIcon",
+      "Number1point5xIcon",
+      "Number2xIcon",
+      "OpenIcon",
+      "OrdinaryHoursIcon",
+      "PencilIcon",
+      "PeopleFilledIcon",
+      "PeopleOutlineIcon",
+      "PhoneIcon",
+      "PlaneIcon",
+      "PlusIcon",
+      "PlusEnclosedIcon",
+      "RemoveIcon",
+      "ReportFilledIcon",
+      "ReportOutlineIcon",
+      "SalarySacrificeIcon",
+      "SaveIcon",
+      "SearchIcon",
+      "SocialIcon",
+      "SuperGuaranteeIcon",
+      "TickIcon",
+      "TickEnclosedIcon",
+      "TouchIDIcon",
+      "TransportIcon",
+      "ReportsIcon"
+    ]
+  }
+}

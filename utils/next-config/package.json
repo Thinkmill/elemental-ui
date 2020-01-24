@@ -1,0 +1,13 @@
+{
+  "name": "@elemental-ui/next-config",
+  "version": "1.0.0",
+  "main": "dist/next-config.cjs.js",
+  "module": "dist/next-config.esm.js",
+  "private": true,
+  "dependencies": {
+    "@preconstruct/next": "^1.0.1"
+  },
+  "docs": {
+    "section": "foundations"
+  }
+}
