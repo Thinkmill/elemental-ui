@@ -12,7 +12,7 @@ module.exports = withReckonConfig(
     pageExtensions: ["js", "md", "mdx", "tsx"],
     exportPathMap(defaultPathMap) {
       let pkgs = fs
-        .readdirSync(path.join(__dirname, "..", "packages"), {
+        .readdirSync(path.join(__dirname, "..", "elemental-ui"), {
           withFileTypes: true
         })
         .filter(dirent => dirent.isDirectory())

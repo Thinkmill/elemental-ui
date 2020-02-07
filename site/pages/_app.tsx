@@ -29,7 +29,7 @@ const nav: { [key: string]: { href: string; name: string }[] } = {
 
 let modules = require
   // @ts-ignore
-  .context("../../packages", true, /\.\/[a-z0-9-]+\/package\.json/);
+  .context("../../elemental-ui", true, /\.\/[a-z0-9-]+\/package\.json/);
 
 modules.keys().forEach((moduleId: string) => {
   let pkg = modules(moduleId);

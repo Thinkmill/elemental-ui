@@ -1,8 +1,8 @@
+
 /** @jsx jsx */
 
 import { ReactNode } from 'react';
-
-import { jsx } from '@elemental-ui/core';
+import { jsx } from '@emotion/core';
 import { forwardRefWithAs } from '@elemental-ui/utils';
 
 // Only display content to screen readers

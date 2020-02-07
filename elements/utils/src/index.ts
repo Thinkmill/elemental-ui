@@ -14,7 +14,6 @@ import { ElementAttributes as _ElementAttributes } from './forwardRefWithAs';
 export { devWarning } from './devWarning';
 export { forwardRefWithAs } from './forwardRefWithAs';
 export { makeId, useId } from './useId';
-export { useMediaQuery } from './useMediaQuery';
 export { wrapHandlers } from './wrapHandlers';
 
 export type ElementAttributes<

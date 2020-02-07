@@ -1,3 +1,5 @@
+// PULL THIS INTO ELEMENTS ONCE WE REFACTOR IT TO NOT COLD IMPORT CORE
+
 import facepaint from 'facepaint';
 
 import { breakpoints } from '@elemental-ui/core';

@@ -125,7 +125,7 @@ const Docs = ({ children }: { children: () => ReactNode }) => children();
 
 let modules = require
   // @ts-ignore
-  .context("../../../packages", true, /^\.\/[a-z-0-9]+\/src$/);
+  .context("../../../elemental-ui", true, /^\.\/[a-z-0-9]+\/src$/);
 
 let scope: { [key: string]: any } = {
   Docs,

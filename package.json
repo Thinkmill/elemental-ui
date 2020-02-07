@@ -4,9 +4,10 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages/*",
-    "site",
-    "utils/*"
+    "elemental-ui/*",
+    "elements/*",
+    "utils/*",
+    "site"
   ],
   "dependencies": {
     "@babel/core": "^7.6.2",
@@ -28,7 +29,8 @@
   },
   "preconstruct": {
     "packages": [
-      "packages/*",
+      "elements/*",
+      "elemental-ui/*",
       "utils/*"
     ]
   }
