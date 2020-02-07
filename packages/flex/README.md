@@ -3,7 +3,7 @@
 The flex component is an extension of `Box` with some helpful style shorthand.
 
 ```jsx
-import { Flex, FlexChild } from '@amaysim/flex';
+import { Flex, FlexChild } from '@elemental-ui/flex';
 ```
 
 ## Parent
