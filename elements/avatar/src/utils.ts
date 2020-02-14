@@ -1,34 +1,9 @@
-import { color as tokenColors } from '@elemental-ui/core';
-
-// TODO: move tint packs somewhere more appropriate
-export const tintPacks = {
-  green: {
-    bg: tokenColors.green400,
-    fg: tokenColors.neutral0,
-  },
-  pink: {
-    bg: tokenColors.pink400,
-    fg: tokenColors.neutral0,
-  },
-  turquoise: {
-    bg: tokenColors.turquoise400,
-    fg: tokenColors.neutral0,
-  },
-  purple: {
-    bg: tokenColors.purple400,
-    fg: tokenColors.neutral0,
-  },
-  orange: {
-    bg: tokenColors.orange400,
-    fg: tokenColors.neutral0,
-  },
-};
-
 export type ColorType = keyof typeof tintPacks;
 export type HashType = number;
 export type TintType = { bg: string; fg: string };
 
-export function getColor(hash: HashType, color?: ColorType) {
+
+export function getColor(hash: HashType, color?: ColorType, tintPacks: Record<string, any>) {
   if (color) {
     return tintPacks[color];
   }

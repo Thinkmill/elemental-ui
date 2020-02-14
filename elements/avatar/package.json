@@ -1,6 +1,6 @@
 {
-  "name": "@elemental-ui/avatar",
-  "version": "0.1.0",
+  "name": "@design-system/avatar",
+  "version": "0.0.0",
   "main": "dist/avatar.cjs.js",
   "module": "dist/avatar.esm.js",
   "docs": {
@@ -13,7 +13,7 @@
     "react": "^16.12.0"
   },
   "dependencies": {
-    "@elemental-ui/core": "^0.0.0",
-    "@elemental-ui/utils": "^0.0.0"
+    "@emotion/core": "^10.0.27",
+    "@design-system/avatar": "^0.1.0"
   }
 }
