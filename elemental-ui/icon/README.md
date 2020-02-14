@@ -6,8 +6,8 @@ where they are in the product, and common interaction patterns that are
 available.
 
 ```jsx
-import { ChevronRightIcon } from '@elemental-ui/icon/ChevronRightIcon'; // prefer explicit entry point
-import { ChevronRightIcon, ... } from '@elemental-ui/icon'; // only when using **many** icons
+import ChevronRight from '@elemental-ui/icon/ChevronRight'; // prefer explicit entry point
+import { ChevronRight, ... } from '@elemental-ui/icon'; // only when using **many** icons
 ```
 
 ### All Icons
@@ -18,7 +18,7 @@ import { ChevronRightIcon, ... } from '@elemental-ui/icon'; // only when using *
     .sort()
     .map(key => {
       let Icon = icons[key];
-      const c = 'center';
+      const c = "center";
 
       return (
         <Flex align={c} column justify={c} py="large" width={166}>

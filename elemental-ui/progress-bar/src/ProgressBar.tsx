@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { Fragment } from 'react';
+import { Fragment } from "react";
 
-import { color, jsx, radii } from '@elemental-ui/core';
-import { Box } from '@elemental-ui/box';
-import { TickIcon } from '@elemental-ui/icon/TickIcon';
+import { color, jsx, radii } from "@elemental-ui/core";
+import { Box } from "@elemental-ui/box";
+import TickIcon from "@elemental-ui/icon/Check";
 
 type ProgressBarProps = {
   /** The current step */
@@ -20,25 +20,25 @@ type StepProps = {
 };
 
 export const ProgressBar = ({ steps, current }: ProgressBarProps) => (
-  <div css={{ display: 'flex', alignItems: 'stretch', alignSelf: 'flex-end' }}>
+  <div css={{ display: "flex", alignItems: "stretch", alignSelf: "flex-end" }}>
     {// create the correct amount of notches in the ProgressBar
-    new Array(steps).fill('').map((c, index) => (
+    new Array(steps).fill("").map((c, index) => (
       <Step index={index} current={current} key={index} />
     ))}
   </div>
 );
 
 const Step = ({ index, current }: StepProps) => {
-  let type: 'incomplete' | 'complete' | 'current' =
-    index === current ? 'current' : index < current ? 'complete' : 'incomplete';
+  let type: "incomplete" | "complete" | "current" =
+    index === current ? "current" : index < current ? "complete" : "incomplete";
   return (
     <Fragment>
       <div
         style={{
-          display: 'flex',
+          display: "flex",
           flexGrow: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
+          alignItems: "center",
+          justifyContent: "center"
         }}
       >
         {index !== 0 && <Box ml="xsmall" />}
@@ -52,27 +52,27 @@ const Step = ({ index, current }: StepProps) => {
             backgroundColor: {
               incomplete: color.neutral300,
               complete: color.turquoise400,
-              current: color.neutral400,
-            }[type],
+              current: color.neutral400
+            }[type]
           }}
         />
         {index === current - 1 && (
           <div
             css={{
-              display: 'flex',
-              position: 'absolute',
+              display: "flex",
+              position: "absolute",
               borderRadius: radii.circle,
               height: 16,
               width: 16,
               backgroundColor: color.turquoise400,
-              alignItems: 'center',
-              justifyContent: 'center',
+              alignItems: "center",
+              justifyContent: "center"
             }}
           >
             <TickIcon
               size={8}
               css={{
-                color: 'white',
+                color: "white"
               }}
             />
           </div>

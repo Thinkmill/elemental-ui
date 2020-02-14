@@ -1,8 +1,8 @@
 // PULL THIS INTO ELEMENTS ONCE WE REFACTOR IT TO NOT COLD IMPORT CORE
 
-import facepaint from 'facepaint';
+import facepaint from "facepaint";
 
-import { breakpoints } from '@elemental-ui/core';
+import { breakpoints } from "@elemental-ui/core";
 
 type BreakPoint = keyof typeof breakpoints;
 
@@ -57,5 +57,5 @@ export const useMediaQuery = () => ({
   mq,
   mapResponsiveProp,
   maxBreak,
-  minBreak,
+  minBreak
 });

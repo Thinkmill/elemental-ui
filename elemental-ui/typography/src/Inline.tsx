@@ -1,16 +1,16 @@
 /** @jsx jsx */
 
-import { ReactNode, forwardRef } from 'react';
+import { ReactNode, forwardRef } from "react";
 
-import { color, jsx, spacing } from '@elemental-ui/core';
-import { OpenIcon } from '@elemental-ui/icon/OpenIcon';
+import { color, jsx, spacing } from "@elemental-ui/core";
+import LinkExternal from "@elemental-ui/icon/LinkExternal";
 
 export const Strong = forwardRef<HTMLElement, {}>((props, ref) => (
   <strong
     ref={ref}
     css={{
       color: color.red400,
-      fontWeight: 'bold',
+      fontWeight: "bold"
     }}
     {...props}
   />
@@ -26,15 +26,15 @@ type AnchorProps = {
   /** When true, display a disclosure icon beside the children. */
   external?: boolean;
   /** The visual appearance of the anchor. */
-  variant?: 'normal' | 'subtle';
+  variant?: "normal" | "subtle";
 };
 
 export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
-  ({ children, external = false, variant = 'normal', ...props }, ref) => {
+  ({ children, external = false, variant = "normal", ...props }, ref) => {
     const externalStyles = external
       ? {
-          alignItems: 'center',
-          display: 'inline-flex',
+          alignItems: "center",
+          display: "inline-flex"
         }
       : null;
 
@@ -42,15 +42,15 @@ export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
       <a
         ref={ref}
         css={{
-          color: variant === 'subtle' ? color.text : color.anchor,
-          textDecoration: 'underline',
-          ...externalStyles,
+          color: variant === "subtle" ? color.text : color.anchor,
+          textDecoration: "underline",
+          ...externalStyles
         }}
         {...props}
       >
         {children}
         {external && (
-          <OpenIcon size="small" css={{ marginLeft: spacing.xsmall }} />
+          <LinkExternal size="small" css={{ marginLeft: spacing.xsmall }} />
         )}
       </a>
     );

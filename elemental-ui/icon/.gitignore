@@ -1,0 +1,12 @@
+# Ignore everything ...
+*
+
+# except
+!.gitignore
+!package.json
+!README.md
+!CHANGELOG.md
+!lib/*
+!src/*
+src/icons
+src/index.tsx

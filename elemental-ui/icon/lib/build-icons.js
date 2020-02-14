@@ -1,45 +1,58 @@
-const fs = require('fs-extra');
-const path = require('path');
+const fs = require("fs-extra");
+const path = require("path");
+const util = require("util");
+const chalk = require("chalk");
+const camelcase = require("camelcase");
+const octicons = require("octicons");
+const { default: svgr } = require("@svgr/core");
+const rimraf = util.promisify(require("rimraf"));
 
-const chalk = require('chalk');
+function svgTemplate(
+  { template },
+  opts,
+  { imports, componentName, props, jsx, exports }
+) {
+  return template.ast`${imports}
+import { makeIcon } from '../Icon';
 
-async function writeIcons() {
-  let icons = require('./icon-src');
-  let keys = Object.keys(icons);
-  await Promise.all(
-    keys.map(async key => {
-      let pathObj =
-        typeof icons[key] === 'string'
-          ? {
-              d: icons[key],
-            }
-          : icons[key];
-      let pathStr = '';
-      for (let objKey in pathObj) {
-        pathStr += ` ${objKey}=${JSON.stringify(pathObj[objKey])}`;
-      }
-      await fs.writeFile(
-        path.join(__dirname, '..', 'src', 'icons', key + '.tsx'),
-        `/** @jsx jsx */
+const ${componentName} = makeIcon((${props})=> ${jsx});
 
-import { forwardRef } from 'react';
-import { jsx } from '@elemental-ui/core';
+${componentName}.displayName = "${componentName.name}";
+${exports}
+`;
+}
 
-import { Icon, IconProps } from '../Icon';
+async function writeIcons(svgStrings, outputDir) {
+  // clear and recreate the output dir before we start
+  await rimraf(outputDir);
+  await fs.mkdir(outputDir, { recursive: true });
 
-export const ${key} = forwardRef<SVGSVGElement, IconProps>(
-  (props: IconProps, ref) => (
-    <Icon {...props}>
-      <path${pathStr} />
-    </Icon>
-  )
-);
-${key}.displayName = '${key}';
-`
+  const icons = await Promise.all(
+    Object.keys(svgStrings).map(async componentName => {
+      // Make the jsCode
+      const jsCode = await svgr(
+        svgStrings[componentName],
+        {
+          icon: true,
+          // ref: true,
+          // memo: true,
+          titleProp: true,
+          template: svgTemplate
+        },
+        { componentName }
       );
+
+      // Write it out
+      await fs.writeFile(
+        path.join(outputDir, componentName + ".tsx"),
+        jsCode,
+        "utf8"
+      );
+
+      return componentName;
     })
   );
-  return keys;
+  return icons;
 }
 
 /**
@@ -48,22 +61,24 @@ ${key}.displayName = '${key}';
  * @param  {array}  icons     - An array of icons
  * @param  {string} indexPath - The path to the export file
  */
-function insertIndex(icons, indexPath) {
+async function insertIndex(icons, indexPath) {
   const index =
     `import { IconProps as _IconProps } from './Icon';\n\n` +
-    icons.map(icon => `export { ${icon} } from './icons/${icon}';`).join('\n') +
+    icons
+      .map(icon => `export { default as ${icon} } from './icons/${icon}';`)
+      .join("\n") +
     `\nexport type IconProps = _IconProps;\n`;
 
   try {
-    fs.writeFileSync(path.normalize(`${process.cwd()}/${indexPath}`), index, {
-      encoding: 'utf8',
+    await fs.writeFile(indexPath, index, {
+      encoding: "utf8"
     });
   } catch (error) {
     console.error(chalk.red(`❌ ${error}`));
     process.exit(1);
   }
 
-  console.info(chalk.green('✅ Index file written successfully'));
+  console.info(chalk.green("✅ Index file written successfully"));
 }
 
 /**
@@ -74,11 +89,11 @@ function insertIndex(icons, indexPath) {
  *
  * @return {boolean}        - True or false
  */
-function writePkg(pkgPath, content) {
+async function writePkg(pkgPath, content) {
   try {
-    fs.ensureFileSync(pkgPath);
-    fs.writeFileSync(pkgPath, JSON.stringify(content, null, 2) + '\n', {
-      encoding: 'utf8',
+    await fs.ensureFile(pkgPath);
+    await fs.writeFile(pkgPath, JSON.stringify(content, null, 2) + "\n", {
+      encoding: "utf8"
     });
   } catch (error) {
     console.error(chalk.red(`❌ ${error}`));
@@ -94,15 +109,15 @@ function writePkg(pkgPath, content) {
  * @param  {array}  icons   - An array of icons
  * @param  {string} pkgPath - The path to the package.json file
  */
-function insertPkg(icons, pkgPath) {
-  pkgPath = path.normalize(`${process.cwd()}/${pkgPath}`);
+async function insertPkg(icons, pkgPath) {
   const pkg = require(pkgPath);
 
-  pkg.preconstruct.entrypoints = ['.', ...icons];
+  if (!pkg.preconstruct) pkg.preconstruct = {};
+  pkg.preconstruct.entrypoints = [".", ...icons];
 
-  writePkg(pkgPath, pkg);
+  await writePkg(pkgPath, pkg);
 
-  console.info(chalk.green('✅ package.json file written successfully'));
+  console.info(chalk.green("✅ package.json file written successfully"));
 }
 
 /**
@@ -110,28 +125,39 @@ function insertPkg(icons, pkgPath) {
  *
  * @param  {array} icons - An array of all icons
  */
-function fixSource(icons) {
-  icons.forEach(icon => {
-    const pkgPath = path.normalize(`${process.cwd()}/${icon}/package.json`);
+async function fixSource(icons) {
+  await Promise.all(
+    icons.map(icon => {
+      const pkgPath = path.normalize(`${process.cwd()}/${icon}/package.json`);
 
-    writePkg(pkgPath, {
-      main: 'dist/icon.cjs.js',
-      module: 'dist/icon.esm.js',
-      preconstruct: {
-        source: `../src/icons/${icon}`,
-      },
-    });
-  });
+      return writePkg(pkgPath, {
+        main: "dist/icon.cjs.js",
+        module: "dist/icon.esm.js",
+        preconstruct: {
+          source: `../src/icons/${icon}`
+        }
+      });
+    })
+  );
 
-  console.info(chalk.green('✅ all package.json files written successfully'));
+  console.info(chalk.green("✅ all package.json files written successfully"));
 }
 
-console.info(chalk.blue('🚧 Building icon exports'));
+console.info(chalk.blue("🚧 Building icon exports"));
 
-writeIcons().then(icons => {
-  insertIndex(icons, 'src/index.tsx');
-  insertPkg(icons, 'package.json');
-  fixSource(icons);
+// This belongs in elemental-ui
+// Create an object of { [componentName]: String(svg) }
+const IconsInput = Object.keys(octicons).reduce((acc, key) => {
+  const componentName = camelcase(key, { pascalCase: true });
+  acc[componentName] = octicons[key].toSVG();
+  return acc;
+}, {});
 
-  console.info();
+const outputDir = path.join(__dirname, "../src/icons");
+writeIcons(IconsInput, outputDir).then(icons => {
+  return Promise.all([
+    insertIndex(icons, path.resolve(__dirname, "../src/index.tsx")),
+    insertPkg(icons, path.normalize(`${process.cwd()}/package.json`)),
+    fixSource(icons)
+  ]);
 });

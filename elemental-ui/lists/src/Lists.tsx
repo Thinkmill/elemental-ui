@@ -1,12 +1,12 @@
 /** @jsx jsx */
 
-import { ReactElement } from 'react';
+import { ReactElement } from "react";
 
-import { Avatar } from '@elemental-ui/avatar';
-import { Badge } from '@elemental-ui/badge';
-import { color, fontSize, jsx, radii, spacing } from '@elemental-ui/core';
-import { ChevronRightIcon } from '@elemental-ui/icon/ChevronRightIcon';
-import { forwardRefWithAs } from '@elemental-ui/utils';
+import { Avatar } from "@elemental-ui/avatar";
+import { Badge } from "@elemental-ui/badge";
+import { color, fontSize, jsx, radii, spacing } from "@elemental-ui/core";
+import ChevronRightIcon from "@elemental-ui/icon/ChevronRight";
+import { forwardRefWithAs } from "@elemental-ui/utils";
 
 // Base Item
 // ------------------------------
@@ -24,10 +24,10 @@ type ItemProps = ItemBaseProps & {
   primaryText: string;
 };
 
-export const Item = forwardRefWithAs<'div', ItemProps>(
+export const Item = forwardRefWithAs<"div", ItemProps>(
   (
     {
-      as: Tag = 'div',
+      as: Tag = "div",
       beforeElement,
       primaryText,
       secondaryText,
@@ -41,12 +41,12 @@ export const Item = forwardRefWithAs<'div', ItemProps>(
     return (
       <Tag
         css={{
-          alignItems: 'center',
+          alignItems: "center",
           backgroundColor: isSelected ? color.blue200 : color.neutral0,
           borderRadius: radii.medium,
-          display: 'flex',
+          display: "flex",
           lineHeight: 1,
-          padding: spacing.medium,
+          padding: spacing.medium
         }}
         ref={ref}
         {...props}
@@ -58,7 +58,7 @@ export const Item = forwardRefWithAs<'div', ItemProps>(
           <div
             css={{
               color: selectedColor(color.neutral600),
-              fontSize: fontSize.medium,
+              fontSize: fontSize.medium
             }}
           >
             {primaryText}
@@ -68,14 +68,14 @@ export const Item = forwardRefWithAs<'div', ItemProps>(
               css={{
                 color: selectedColor(color.neutral400),
                 fontSize: fontSize.small,
-                marginTop: spacing.small,
+                marginTop: spacing.small
               }}
             >
               {secondaryText}
             </div>
           )}
         </div>
-        <ChevronRightIcon fill={isSelected ? 'neutral0' : 'blue200'} />
+        <ChevronRightIcon fill={isSelected ? "neutral0" : "blue200"} />
       </Tag>
     );
   }
@@ -100,15 +100,15 @@ export const EmployeeItem = ({ name, ...props }: EmployeeProps) => (
 // ------------------------------
 
 const statusMap = {
-  ACCEPTED: ['positive', 'Accepted'],
-  DONE: ['positive', 'Done'],
-  DRAFT: ['neutral', 'Draft'],
-  ERROR: ['critical', 'Error'],
-  PENDING: ['neutral', 'Pending'],
-  PAID: ['positive', 'Paid'],
-  REJECTED: ['critical', 'Rejected'],
-  READYTOSUBMIT: ['active', 'Ready'],
-  SUCCESS: ['positive', 'Success'],
+  ACCEPTED: ["positive", "Accepted"],
+  DONE: ["positive", "Done"],
+  DRAFT: ["neutral", "Draft"],
+  ERROR: ["critical", "Error"],
+  PENDING: ["neutral", "Pending"],
+  PAID: ["positive", "Paid"],
+  REJECTED: ["critical", "Rejected"],
+  READYTOSUBMIT: ["active", "Ready"],
+  SUCCESS: ["positive", "Success"]
 };
 
 type PayrunProps = {
@@ -122,7 +122,7 @@ export const PayrunItem = ({ date, status, ...props }: PayrunProps) => {
   return (
     <Item
       beforeElement={
-        <div css={{ display: 'flex', flexDirection: 'column', width: 80 }}>
+        <div css={{ display: "flex", flexDirection: "column", width: 80 }}>
           <Badge tone={badgeTone}>{badgeLabel}</Badge>
         </div>
       }

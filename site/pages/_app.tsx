@@ -6,8 +6,8 @@ import { useRouter } from "next/router";
 
 import { Container } from "@elemental-ui/container";
 import { Core, color, jsx, spacing } from "@elemental-ui/core";
-import { CancelIcon } from "@elemental-ui/icon/CancelIcon";
-import { DotsIcon } from "@elemental-ui/icon/DotsIcon";
+import CancelIcon from "@elemental-ui/icon/X";
+import DotsIcon from "@elemental-ui/icon/X";
 import { useMediaQuery } from "@elemental-ui/utils";
 import { Heading } from "@elemental-ui/typography";
 import { AnchorHTMLAttributes, HTMLAttributes, ReactNode } from "react";
