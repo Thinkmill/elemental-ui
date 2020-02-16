@@ -1,11 +1,11 @@
 import { makeAvatar } from '@design-system/avatar';
 import { fontSize, color as tokenColors } from '@elemental-ui/core';
-console.log('HELLO MAKE AVATAR HERE', makeAvatar);
 const sizeMap = {
   small: 32,
   medium: 40,
   large: 56,
 };
+
 const fontMap = {
   small: fontSize.small,
   medium: fontSize.medium,
