@@ -1,0 +1,19 @@
+{
+  "name": "@elemental-ui/avatar",
+  "version": "0.0.0",
+  "main": "dist/avatar.cjs.js",
+  "module": "dist/avatar.esm.js",
+  "docs": {
+    "section": "visual"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "@elemental-ui/core": "^0.0.0",
+    "@elemental-ui/utils": "^0.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@elemental-ui/lists",
+  "version": "0.0.0",
+  "main": "dist/lists.cjs.js",
+  "module": "dist/lists.esm.js",
+  "docs": {
+    "section": "visual"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "@elemental-ui/avatar": "^0.0.0",
+    "@elemental-ui/badge": "^0.0.0",
+    "@elemental-ui/core": "^0.0.0",
+    "@elemental-ui/icon": "^0.0.0",
+    "@elemental-ui/utils": "^0.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@elemental-ui/collapsible",
+  "version": "0.0.0",
+  "main": "dist/collapsible.cjs.js",
+  "module": "dist/collapsible.esm.js",
+  "docs": {
+    "section": "layout"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.3",
+    "@elemental-ui/core": "^0.0.0",
+    "@elemental-ui/utils": "^0.0.0",
+    "prop-types": "^15.7.2"
+  }
+}

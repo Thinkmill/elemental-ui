@@ -1,0 +1,19 @@
+{
+  "name": "@elemental-ui/container",
+  "version": "0.0.0",
+  "main": "dist/container.cjs.js",
+  "module": "dist/container.esm.js",
+  "docs": {
+    "section": "layout"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "@elemental-ui/core": "^0.0.0",
+    "@elemental-ui/utils": "^0.0.0"
+  }
+}

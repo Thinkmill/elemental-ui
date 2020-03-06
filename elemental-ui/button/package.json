@@ -1,0 +1,20 @@
+{
+  "name": "@elemental-ui/button",
+  "version": "0.0.0",
+  "main": "dist/button.cjs.js",
+  "module": "dist/button.esm.js",
+  "docs": {
+    "section": "forms"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "@elemental-ui/box": "^0.0.0",
+    "@elemental-ui/core": "^0.0.0",
+    "@elemental-ui/utils": "^0.0.0"
+  }
+}
