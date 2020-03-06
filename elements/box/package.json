@@ -1,5 +1,5 @@
 {
-  "name": "@elemental-ui/box",
+  "name": "@design-system/box",
   "version": "0.0.0",
   "main": "dist/box.cjs.js",
   "module": "dist/box.esm.js",
