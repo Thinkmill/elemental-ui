@@ -5,6 +5,7 @@
   "module": "dist/next-config.esm.js",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.8.7",
     "@preconstruct/next": "^1.0.1"
   },
   "docs": {

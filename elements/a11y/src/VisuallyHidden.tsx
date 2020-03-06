@@ -1,9 +1,8 @@
-
 /** @jsx jsx */
 
-import { ReactNode } from 'react';
-import { jsx } from '@emotion/core';
-import { forwardRefWithAs } from '@elemental-ui/utils';
+import { ReactNode, ReactComponentElement } from "react";
+import { jsx } from "@emotion/core";
+import { forwardRefWithAs } from "@design-system/utils";
 
 // Only display content to screen readers
 // ------------------------------
@@ -13,20 +12,20 @@ type Props = {
   children: ReactNode;
 };
 
-export const VisuallyHidden = forwardRefWithAs<'span', Props>(
-  ({ as: Tag = 'span', ...props }, ref) => {
+export const VisuallyHidden = forwardRefWithAs<"span", Props>(
+  ({ as: Tag = "span", ...props }: any, ref: any) => {
     return (
       <Tag
         ref={ref}
         css={{
           border: 0,
-          clip: 'rect(0, 0, 0, 0)',
+          clip: "rect(0, 0, 0, 0)",
           height: 1,
-          overflow: 'hidden',
+          overflow: "hidden",
           padding: 0,
-          position: 'absolute',
-          whiteSpace: 'nowrap',
-          width: 1,
+          position: "absolute",
+          whiteSpace: "nowrap",
+          width: 1
         }}
         {...props}
       />

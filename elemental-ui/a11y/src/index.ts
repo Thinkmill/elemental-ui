@@ -1,1 +1,1 @@
-export * from '@design-system/a11y';
+export * from "@design-system/a11y";

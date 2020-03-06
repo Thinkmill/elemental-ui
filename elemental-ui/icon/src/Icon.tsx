@@ -8,6 +8,8 @@ export type IconProps = SVGAttributes<SVGSVGElement> & {
   fill?: keyof typeof color | "currentColor";
   /** The size key for the icon. */
   size?: keyof typeof sizeMap | number;
+  title?: string;
+  titleId?: string;
 };
 
 const sizeMap = {
@@ -18,7 +20,7 @@ const sizeMap = {
 
 export function makeIcon(
   Svg: React.ComponentType<IconProps>
-): React.ComponentType {
+): React.ComponentType<IconProps> {
   return function Icon({ size = "medium", fill = "currentColor", ...props }) {
     const resolvedSize = typeof size === "number" ? size : sizeMap[size];
     const resolvedFill = fill === "currentColor" ? "currentColor" : color[fill];

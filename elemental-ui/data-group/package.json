@@ -13,6 +13,7 @@
     "react": "^16.12.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.8.7",
     "@elemental-ui/box": "^0.0.0",
     "@elemental-ui/core": "^0.0.0",
     "@elemental-ui/typography": "^0.0.0",
