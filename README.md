@@ -1,5 +1,8 @@
 # Elemental UI
 
+See [docs site](http://elemental-ui.com/).
+
+
 ## Getting started in the repo
 
 Install dependencies
